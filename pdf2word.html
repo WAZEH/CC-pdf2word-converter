@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>PDF to  DOC</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Lato|Raleway|Source+Sans+Pro" rel="stylesheet">
+  <style type="text/css">
+
+
+
+  body {
+font-family: 'Source Sans Pro', sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  background-color: white;
+  overflow-x: hidden;
+}
+
+ .navbar-inverse .navbar-nav>li>a:hover
+{
+    background-color:rgb(235, 137, 26);
+    color:#000;
+
+}
+
+
+.active
+{
+
+  border-bottom:1px solid rgb(235, 137, 26) ;
+
+}
+
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    width:100%;
+    height: 300px;
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.services-nav-item-icon {
+    width: 42px;
+    height: 42px;
+    margin-left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.box__dragndrop,
+.box__uploading,
+.box__success,
+.box__error {
+  display: none;
+}
+
+.files input {
+    outline: 2px dashed #92b0b3;
+    outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    padding: 120px 0px 85px 35%;
+    text-align: center !important;
+    margin: 0;
+    width: 100% !important;
+}
+.files input:focus{     outline: 2px dashed #92b0b3;  outline-offset: -10px;
+    -webkit-transition: outline-offset .15s ease-in-out, background-color .15s linear;
+    transition: outline-offset .15s ease-in-out, background-color .15s linear; border:1px solid #92b0b3;
+ }
+.files{ position:relative}
+.files:after {  pointer-events: none;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 50px;
+    right: 0;
+    height: 56px;
+    content: "";
+    background-image: url(https://image.flaticon.com/icons/png/128/109/109612.png);
+    display: block;
+    margin: 0 auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.color input{ background-color:#f1f1f1;}
+.files:before {
+    position: absolute;
+    bottom: 10px;
+    left: 0;  pointer-events: none;
+    width: 100%;
+    right: 0;
+    height: 57px;
+    content: " or drag it here. ";
+    display: block;
+    margin: 0 auto;
+    color: black;
+    font-weight: 600;
+    text-transform: capitalize;
+    text-align: center;
+}
+
+h1 {
+    font-size: 32px;
+    line-height: 1.5;
+    font-weight: 600;
+    color: #262626;
+    margin: 0;
+}
+h1 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
+
+ul {
+  overflow: auto;
+}
+
+ul li {
+  list-style-type: none;
+  float: right;
+}
+
+ul li a i {
+  background: #205D7A;
+  color: #fff;
+  width: 30px;
+  height: 30px;
+  border-radius: 20px;
+  font-size: 15px;
+  text-align: center;
+  margin-right: 10px;
+  padding-top: 15%;
+}
+.img-responsive{
+  width: 100px;
+  height: 75px;
+}
+#userImage{
+background-color:white ;
+}
+
+html, body { height: 100%; }
+body {
+  background:radial-gradient(ellipse at center, rgba(255,254,234,1) 0%, rgba(255,254,234,1) 35%, #B7E8EB 100%);
+  overflow: hidden;
+}
+
+.ocean {
+  height: 5%;
+  width:100%;
+  position:absolute;
+  bottom:0;
+  left:0;
+  background: #015871;
+}
+
+.wave {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/85486/wave.svg) repeat-x;
+  position: absolute;
+  top: -198px;
+  width: 6400px;
+  height: 198px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
+  transform: translate3d(0, 0, 0);
+}
+
+.wave:nth-of-type(2) {
+  top: -175px;
+  animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 7s ease -1.25s infinite;
+  opacity: 1;
+}
+
+@keyframes wave {
+  0% {
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -1600px;
+  }
+}
+
+@keyframes swell {
+  0%, 100% {
+    transform: translate3d(0,-25px,0);
+  }
+  50% {
+    transform: translate3d(0,5px,0);
+  }
+}
+  </style>
+</head>
+<body>
+  <div class="ocean">
+  <div class="wave"></div>
+  <div class="wave"></div>
+</div>
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation" style="background-color:white;height:83px;border-bottom:1px solid rgb(249, 249, 249);">
+     
+        <div class="container">
+            
+            <div class="navbar-header" style="padding-top:1px;">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                  <img class="img-responsive" src="https://www.allfreevideoconverter.com/freepdfconverter/features1.png">
+            </div>
+           
+            <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1" style="padding-top:15px;background-color:white;">
+                <ul class="nav navbar-nav">
+
+                    <li>
+                     <a href="#" class="btn btn-info" role="button" style="background-color:inherit;color:black;border: 2px solid white ;">Register</a>
+                    </li>
+
+                    <li>
+                      &nbsp;&nbsp;&nbsp;&nbsp;
+
+                    </li>
+
+                     <li>
+                     <a href="#" class="btn btn-info" role="button" style="background-color:inherit;color:black;border: 2px solid white">Login</a>
+                    </li>
+
+
+
+
+         
+
+
+
+
+                             <li >
+
+                    </li>
+                </ul>
+      </div>
+
+
+            
+        </div>
+
+        
+
+
+    </nav>
+
+
+
+
+
+   <div class="container-fluid" style="background-color:white;" >
+
+    <div class="container" >
+      <br><br><br><br>
+      <div class="container">
+  <div class="row">
+     <div class="col-md-12">
+      <h1> PDF  to Word</h1>
+<h5>Convert your PDF to  doc  online</h5>
+<br>
+
+          </div>
+    <div class="col-md-12">
+
+
+        <form action="" id="pdftoword"  method="POST" enctype="multipart/form-data">
+
+
+
+
+              <div class="form-group files">
+                <label>Upload Your File </label>
+                <input type="file" id="userImage" name="userImage" class="form-control" >
+                <input type="hidden" id="key" name="key" value="Gd243vdfgdfgfdgfd55554GFFDGFDGSGSDsaDSF" class="form-control" >
+                <input type="hidden" id="sfile" name="sfile" value="pdf" class="form-control" >
+                <input type="hidden" id="tfile" name="tfile" value="doc" class="form-control" >
+                <input type="hidden" id="purl" name="purl" value="<?php  echo getprocessid(); ?>" class="form-control" >
+
+              </div>
+
+
+
+              <center>
+
+
+
+
+
+  <a href="download.html">
+<button type="button" name="submit">Upload</button>              </center>
+              </a>
+
+
+          </form>
+
+
+    </div>
+
+  </div>
+</div>
+  <br><br><br><br><br><br>
+</div>
+</div>
+
+<div class="container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4">
+        <br>   <br>
+        <center>
+       <b>How to compress a PDF</b>
+
+ <br> </center>
+<p >Just drag-and-drop your PDF file in the box above, wait for the compression to complete and download your file. It's that simple.</p>
+      </div>
+        <div class="col-lg-4"><br>   <br>
+ <center>
+       <b> Security guaranteed</b> <br></center>
+
+<p>Your files will be permanently deleted from our server after one hour. No one has access to your files and privacy is 100% guaranteed.</p>
+      </div>
+        <div class="col-lg-4">   <br>   <br>
+ <center>
+
+       <b>Easy to use.</b> </center>
+
+<p>Drag and drop your file, wait a few seconds while it shrinks, and download it with a single click. The process is quick and secure.</p>
+      </div>
+    </div>
+   <br>   <br>
+<hr>
+     <div class="row">
+      <div class="col-lg-4">
+        <br>
+       <b>Convert from PDF</b>
+ <br> <br>
+
+      </div>
+
+    </div>
+
+       <br>   <br>
+  </div>
+</div>
+
+
+<script>
+
+
+     $("#pdftoword").submit(function(e) {
+
+    var url = "pdf-doc.php"; 
+
+
+    $.ajax({
+           type: "POST",
+           url: url,
+           
+           type: "POST",
+data:  new FormData(this),
+contentType: false,
+cache: false,
+processData:false,
+           beforeSend:function(){
+
+            $("#pdftoword").html("<center><span style='margin-left:60px;background:#f1f1f1'><img src=''' width=200x100></span></center>");
+
+           },
+          success: function(result){
+
+         
+alert(result);
+ var obj = JSON.parse(result);
+  var li=obj.p;
+   var file=obj.file;
+ 
+  window.location.href="pdf-doc-download.php?link="+li+"&file="+file;
+
+}
+
+
+
+          ,
+          complete:function()
+          {
+
+
+
+          },
+
+            error:function(xhr,status,error){
+              alert(error);
+
+            }
+         });
+
+    e.preventDefault(); 
+});
+     </script>
+
+     <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+
+
+
+</body>
+
+
+</html>

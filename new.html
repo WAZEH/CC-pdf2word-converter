@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PDF to Word Conversion</title>
+  </head>
+  <script type="text/javascript">
+  function convertPDFtoWord(pdfFile) {
+pdftoword.extract(pdfFile, {}, function(err, data) {
+if (err) return console.error(err);
+console.log(data.toString());
+});
+}
+
+function downloadWordFile(wordFile) {
+var link = document.createElement("a");
+link.download = "sample.docx";
+link.href = wordFile;
+link.click();
+}
+function convertPDFtoWord(pdfFile) {
+pdftoword.extract(pdfFile, {}, function(err, data) {
+if (err) return console.error(err);
+console.log(data.toString());
+downloadWordFile(data);
+});
+}
+
+  </script>
+  <body>
+    <button onclick="convertPDFtoWord('sample.pdf')">Convert PDF to Word</button>
+  </body>
+</html>
